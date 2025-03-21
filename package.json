@@ -1,0 +1,24 @@
+{
+  "name": "visualisation",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "@deck.gl/carto": "^9.1.4",
+    "@deck.gl/core": "^9.1.4",
+    "@deck.gl/layers": "^9.1.4",
+    "@deck.gl/mapbox": "^9.1.4",
+    "chart.js": "^4.4.8",
+    "maplibre-gl": "^5.2.0",
+    "papaparse": "^5.5.2",
+    "xlsx": "^0.18.5"
+  }
+}

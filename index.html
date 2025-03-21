@@ -1,0 +1,168 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Brexit Economic Analysis</title>  
+  <script src="https://unpkg.com/maplibre-gl@3.0.0/dist/maplibre-gl.js"></script>  
+  <link href="https://unpkg.com/maplibre-gl@3.0.0/dist/maplibre-gl.css" rel="stylesheet">  
+  <style>  
+    body {  
+      font-family: 'Arial', sans-serif;  
+      margin: 0;  
+      padding: 0;  
+      display: flex;  
+      justify-content: center;  
+      align-items: center;  
+      min-height: 100vh;  
+      background-color: #f5f5f5;  
+    }  
+    
+    #homepage {  
+      text-align: center;  
+      max-width: 1000px;  
+      width: 90%;  
+      padding: 3rem;  
+      background-color: white;  
+      border-radius: 12px;  
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);  
+    }  
+    
+    h1 {  
+      color: #333;  
+      margin-bottom: 1.5rem;  
+      font-size: 2.5rem;  
+    }  
+    
+    .author {  
+      color: #666;  
+      margin-bottom: 1rem;  
+      font-size: 1.2rem;  
+    }  
+    
+    .github-link {  
+      color: #3498db;  
+      text-decoration: none;  
+      display: block;  
+      margin-bottom: 2rem;  
+      font-size: 1rem;  
+    }  
+    
+    .github-link:hover {  
+      text-decoration: underline;  
+    }  
+    
+    .intro-text {  
+      text-align: left;  
+      color: #444;  
+      line-height: 1.6;  
+      margin-bottom: 2.5rem;  
+      font-size: 1.1rem;  
+    }  
+    
+    .button-container {  
+      display: flex;  
+      justify-content: center;  
+      gap: 40px;  
+      margin-top: 2.5rem;  
+    }  
+    
+    /* 只针对主页的按钮 */  
+    .homepage-button {  
+      padding: 15px 30px;  
+      min-width: 220px;  
+      background-color: #3498db;  
+      color: white;  
+      border: none;  
+      border-radius: 6px;  
+      font-size: 1.1rem;  
+      cursor: pointer;  
+      transition: all 0.3s;  
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+    }  
+    
+    .homepage-button:hover {  
+      background-color: #2980b9;  
+      transform: translateY(-2px);  
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  
+    }  
+    
+    #map-container {  
+      position: fixed;  
+      top: 0;  
+      left: 0;  
+      width: 100%;  
+      height: 100%;  
+      background-color: white;  
+    }  
+    
+    .header {  
+      display: flex;  
+      align-items: center;  
+      padding: 1rem 2rem;  
+      background-color: #f8f8f8;  
+      border-bottom: 1px solid #eee;  
+    }  
+    
+    /* 只针对返回按钮 */  
+    .back-button {  
+      margin-right: 2rem;  
+      background-color: #3498db;  
+      color: white;  
+      border: none;  
+      border-radius: 4px;  
+      padding: 8px 15px;  
+      font-size: 1rem;  
+      cursor: pointer;  
+    }  
+    
+    .back-button:hover {  
+      background-color: #2980b9;  
+    }  
+    
+    .header h2 {  
+      margin: 0;  
+      flex-grow: 1;  
+      text-align: center;  
+      font-size: 1.5rem;  
+    }  
+    
+    #map {  
+      width: 100%;  
+      height: calc(100% - 70px);  
+    }  
+  </style>  
+</head>  
+<body>  
+  <div id="homepage">  
+    <h1>Brexit Economic Analysis</h1>  
+    <p class="author">Scarlett Liu</p>  
+    <a href="https://github.com/Scarlett-Cococo/Interactive-Web" target="_blank" class="github-link">  
+      https://github.com/Scarlett-Cococo/Interactive-Web  
+    </a>  
+    
+    <div class="intro-text">  
+      <p>Brexit, the United Kingdom's withdrawal from the European Union, represents one of the most significant geopolitical and economic shifts of the 21st century. Following a referendum on 23rd June 2016, in which 51.9% of UK voters supported leaving the EU, the UK officially departed on 31st January 2020, with a transition period ending on 31st December 2020.</p>  
+      
+      <p>This economic analysis aims to examine the multifaceted impact of Brexit on both the UK and EU economies. By visualising key economic indicators and industry-specific data, we can better understand how trade patterns, GDP contributions, and economic relationships have evolved in the post-Brexit landscape. The analysis is particularly important as it highlights structural changes in the UK economy, sectoral vulnerabilities, and emerging opportunities in this new economic framework.</p>  
+      
+      <p>Through interactive visualisations, this tool allows users to explore data relating to EU member states and detailed breakdowns of UK industry GDP contributions, providing insights into the ongoing economic consequences of this historic decision.</p>  
+    </div>  
+    
+    <div class="button-container">  
+      <button class="homepage-button" onclick="showMap('eu')">EU Map</button>  
+      <button class="homepage-button" onclick="showMap('uk')">UK Industry GDP Analysis</button>  
+    </div>  
+  </div>  
+
+  <div id="map-container" style="display:none;">  
+    <div class="header">  
+      <button class="back-button" onclick="backToHome()">Back to Home</button>  
+      <h2 id="map-title">Map</h2>  
+    </div>  
+    <div id="map"></div>  
+  </div>  
+
+  <script type="module" src="/src/main.js"></script>  
+</body>  
+</html>  
