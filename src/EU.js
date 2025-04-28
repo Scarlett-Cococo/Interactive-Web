@@ -193,7 +193,7 @@ export function loadEUMap(containerId) {
     // Set the document title initially  
     document.title = `EU GDP Map (${currentYear})`;  
     
-    fetch('/EU_GDP.geojson')  
+    fetch('EU_GDP.geojson')  
       .then(response => {  
         if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);  
         return response.json();  
