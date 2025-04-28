@@ -166,6 +166,35 @@
   <div id="eu-map" style="display:none; width:100vw; height:100vh;"></div>  
   <div id="uk-map" style="display:none; width:100vw; height:100vh;"></div>  
 
-  <script type="module" src="src/main.js"></script>  
+  <script type="module">  
+    import { initUKMap, cleanupUKMap } from './src/UK.js';  
+    import { loadEUMap } from './src/EU.js';  
+    
+    window.initUKMap = initUKMap;  
+    window.cleanupUKMap = cleanupUKMap;  
+    window.loadEUMap = loadEUMap;  
+    
+    document.addEventListener('DOMContentLoaded', () => {  
+      document.getElementById('eu-map-btn').addEventListener('click', () => {  
+        document.getElementById('homepage').style.display = 'none';  
+        document.getElementById('map-container').style.display = 'block';  
+        document.getElementById('map-title').textContent = 'European Union GDP Map';  
+        loadEUMap('map');  
+      });  
+      
+      document.getElementById('uk-map-btn').addEventListener('click', () => {  
+        document.getElementById('homepage').style.display = 'none';  
+        document.getElementById('map-container').style.display = 'block';  
+        document.getElementById('map-title').textContent = 'UK Industry GDP Analysis';  
+        initUKMap('map');  
+      });  
+      
+      document.getElementById('back-button').addEventListener('click', () => {  
+        document.getElementById('homepage').style.display = 'block';  
+        document.getElementById('map-container').style.display = 'none';  
+        cleanupUKMap();  
+      });  
+    });  
+  </script>  
 </body>  
 </html>  
