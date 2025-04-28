@@ -4,7 +4,7 @@
   <meta charset="UTF-8">  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <title>Brexit Economic Analysis</title>  
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
   <script src="https://unpkg.com/maplibre-gl@3.0.0/dist/maplibre-gl.js"></script>  
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>  
   <link href="https://unpkg.com/maplibre-gl@3.0.0/dist/maplibre-gl.css" rel="stylesheet">  
@@ -68,8 +68,6 @@
       gap: 40px;  
       margin-top: 2.5rem;  
     }  
-
-
    
     .homepage-button {  
       padding: 15px 30px;  
@@ -107,7 +105,6 @@
       border-bottom: 1px solid #eee;  
     }  
     
-   
     .back-button {  
       margin-right: 2rem;  
       background-color: #3498db;  
@@ -153,22 +150,22 @@
     </div>  
     
     <div class="button-container">  
-      <button class="homepage-button" onclick="showMap('eu')">EU Map</button>  
-      <button class="homepage-button" onclick="showMap('uk')">UK Industry GDP Analysis</button>  
+      <button id="eu-map-btn" class="homepage-button">EU Map</button>  
+      <button id="uk-map-btn" class="homepage-button">UK Industry GDP Analysis</button>  
     </div>  
   </div>  
 
   <div id="map-container" style="display:none;">  
     <div class="header">  
-      <button class="back-button" onclick="backToHome()">Back to Home</button>  
+      <button id="back-button" class="back-button">Back to Home</button>  
       <h2 id="map-title">Map</h2>  
     </div>  
     <div id="map"></div>  
   </div>  
 
-<div id="eu-map" style="display:none; width:100vw; height:100vh;"></div>  
-<div id="uk-map" style="display:none; width:100vw; height:100vh;"></div>  
+  <div id="eu-map" style="display:none; width:100vw; height:100vh;"></div>  
+  <div id="uk-map" style="display:none; width:100vw; height:100vh;"></div>  
 
-  <script type="module" src="src/main.js"></script>
+  <script type="module" src="src/main.js"></script>  
 </body>  
 </html>  
