@@ -27,7 +27,7 @@ function showMap(region) {
 }  
 
 function backToHome() {  
-    document.getElementById('homepage').style.display = 'flex';  
+    document.getElementById('homepage').style.display = 'block';  
     document.getElementById('map-container').style.display = 'none';  
 
     cleanupUKMap();  
