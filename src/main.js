@@ -8,7 +8,7 @@ function showMap(region) {
     document.getElementById('homepage').style.display = 'none';  
     document.getElementById('map-container').style.display = 'block';  
 
-    const title = region === 'eu' ? 'European Union GDP Map' : '';  
+    const title = region === 'eu' ? 'European Union GDP Map' : 'UK Industry GDP Analysis';  
     document.getElementById('map-title').textContent = title;  
 
     cleanupUKMap();  
@@ -39,13 +39,12 @@ function backToHome() {
     currentMapType = null;  
 }  
 
+// 只需一次，暴露到全局 window，保证 HTML onclick 能识别（在Vite的ESM模式下必须加）  
 window.showMap = showMap;  
 window.backToHome = backToHome;  
 
 document.addEventListener('DOMContentLoaded', () => {  
-    window.showMap = showMap;  
-    window.backToHome = backToHome;  
-
+    // 背景图设置，保证只影响 homepage  
     const homepage = document.getElementById('homepage');  
     if (homepage) {  
         homepage.style.backgroundImage = "url('/UK_and_the_European_Union.svg')";  
