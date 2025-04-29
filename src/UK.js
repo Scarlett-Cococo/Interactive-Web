@@ -163,7 +163,7 @@ export function initUKMap(mapElementId) {
   
   async function loadCSVData() {  
     try {  
-      const response = await fetch('/mgdp2.csv');  
+      const response = await fetch('/Interactive-Web/public/mgdp2.csv');  
       if (!response.ok) {  
         throw new Error(`HTTP error! Status: ${response.status}`);  
       }  
