@@ -161,43 +161,33 @@ export function initUKMap(mapElementId) {
     return Math.floor(monthIndex / 3) + 1;  
   }  
   
-  async function loadCSVData() {  
-    try {  
-      const response = await fetch('/Interactive-Web/public/mgdp2.csv');  
-      if (!response.ok) {  
-        throw new Error(`HTTP error! Status: ${response.status}`);  
-      }  
-// Add the string here
-      const csvText = await response.text();  
-      console.log("CSV loaded successfully, first 500 chars:", csvText.substring(0, 500));  
-      
-      if (!window.XLSX) {  
-        throw new Error('XLSX library not loaded');  
-      }  
-      
-      const workbook = window.XLSX.read(csvText, {   
-        type: 'string',   
-        raw: true,  
-        codepage: 65001   
-      });  
-      
-      if (!workbook) {  
-        throw new Error('Failed to parse CSV into workbook');  
-      }  
-      
-      const firstSheetName = workbook.SheetNames[0];  
-      const worksheet = workbook.Sheets[firstSheetName];  
-      const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });  
-      
-      console.log("JSON data first row:", jsonData[0]);  
-      
-      processData(jsonData);  
-      initUI();  
-    } catch (error) {  
-      console.error('Error loading CSV data:', error);  
-      showError('Failed to load or parse the CSV file. Please check the file format and try again.');  
+  // CSV 
+async function loadCSVData() {  
+  try {  
+    const response = await fetch('/Interactive-Web/public/mgdp2.csv'); 
+    if (!response.ok) {  
+      throw new Error(`HTTP error! Status: ${response.status}`);  
     }  
+    
+    const csvText = await response.text();  
+    console.log("CSV loaded successfully");  
+    
+     
+    const results = Papa.parse(csvText, {  
+      header: false,  
+      dynamicTyping: true, 
+      skipEmptyLines: true  
+    });  
+    
+    console.log("CSV parsed, first row:", results.data[0]);  
+    
+    processData(results.data);  
+    initUI();  
+  } catch (error) {  
+    console.error('Error loading CSV data:', error);  
+    showError('Failed to load or parse the CSV file: ' + error.message);  
   }  
+}  
   
   function processData(jsonData) {  
     if (!jsonData || jsonData.length < 2) {  
