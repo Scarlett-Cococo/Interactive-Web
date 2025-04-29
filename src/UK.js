@@ -167,10 +167,24 @@ export function initUKMap(mapElementId) {
       if (!response.ok) {  
         throw new Error(`HTTP error! Status: ${response.status}`);  
       }  
-      
+// Add the string here
       const csvText = await response.text();  
       console.log("CSV loaded successfully, first 500 chars:", csvText.substring(0, 500));  
-      const workbook = window.XLSX.read(csvText, { type: 'string' });  
+      
+      if (!window.XLSX) {  
+        throw new Error('XLSX library not loaded');  
+      }  
+      
+      const workbook = window.XLSX.read(csvText, {   
+        type: 'string',   
+        raw: true,  
+        codepage: 65001   
+      });  
+      
+      if (!workbook) {  
+        throw new Error('Failed to parse CSV into workbook');  
+      }  
+      
       const firstSheetName = workbook.SheetNames[0];  
       const worksheet = workbook.Sheets[firstSheetName];  
       const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });  
