@@ -1,5 +1,3 @@
-import * as XLSX from 'xlsx';  
-import Chart from 'chart.js/auto';  
 
 let growthChart = null;  
 let contributionChart = null;  
@@ -172,8 +170,7 @@ export function initUKMap(mapElementId) {
       
       const csvText = await response.text();  
       console.log("CSV loaded successfully, first 500 chars:", csvText.substring(0, 500));  
-      
-      const workbook = XLSX.read(csvText, { type: 'string' });  
+      const workbook = window.XLSX.read(csvText, { type: 'string' });  
       const firstSheetName = workbook.SheetNames[0];  
       const worksheet = workbook.Sheets[firstSheetName];  
       const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });  
