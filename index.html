@@ -7,7 +7,11 @@
   <script type="module">  
     import XLSX from 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/+esm';  
     window.XLSX = XLSX;  
-  </script> 
+    console.log('[XLSX Vefiry]', {  
+      version: XLSX.version,  
+      read: typeof XLSX.read === 'function'  
+    });  
+  </script>
   <script type="importmap">  
   </script>  
   <script src="https://unpkg.com/maplibre-gl@3.0.0/dist/maplibre-gl.js"></script>  
